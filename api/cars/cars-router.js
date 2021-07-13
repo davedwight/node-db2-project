@@ -1,11 +1,16 @@
 const router = require("express").Router();
 
-// const Car = require('./cars-model');
+const Car = require("./cars-model");
 
 // import middleware here
 
-router.get("/", (req, res, next) => {
-  console.log("inside cars-router");
+router.get("/", async (req, res, next) => {
+  try {
+    const cars = Car.getAll();
+    res.json(cars);
+  } catch (err) {
+    next(err);
+  }
 });
 
 // get by id

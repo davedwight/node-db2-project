@@ -1,8 +1,8 @@
-const db = require('../../data/db-config');
+const db = require("../../data/db-config");
 
 const getAll = async () => {
-  const cars = await db('cars');
-  console.log(cars);
+  const cars = await db("cars");
+  return cars;
 };
 
 const getById = () => {
@@ -11,4 +11,10 @@ const getById = () => {
 
 const create = () => {
   // DO YOUR MAGIC
+};
+
+module.exports = {
+  getAll,
+  getById,
+  create,
 };
