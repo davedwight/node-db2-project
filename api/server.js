@@ -18,7 +18,6 @@ server.get("/", (req, res) => {
 
 server.use("/api/cars", carsRouter);
 
-
 server.use("*", notFound);
 
 server.use(errorHandling);
