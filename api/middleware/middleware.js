@@ -12,7 +12,6 @@ const notFound = (req, res, next) => {
   res.status(404).json({
     message: "not found, sorry!",
   });
-  next();
 };
 
 const errorHandling = (err, req, res, next) => {

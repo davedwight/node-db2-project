@@ -6,14 +6,22 @@ const Car = require("./cars-model");
 
 router.get("/", async (req, res, next) => {
   try {
-    const cars = Car.getAll();
+    const cars = await Car.getAll();
     res.json(cars);
   } catch (err) {
     next(err);
   }
 });
 
-// get by id
+router.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const car = await Car.getById(id);
+    res.json(car);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // post
 
