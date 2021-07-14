@@ -2,7 +2,12 @@ const router = require("express").Router();
 
 const Car = require("./cars-model");
 
-// import middleware here
+const {
+  checkCarId,
+  checkCarPayload,
+  checkVinNumberValid,
+  checkVinNumberUnique,
+} = require("./cars-middleware");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -13,14 +18,8 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const car = await Car.getById(id);
-    res.json(car);
-  } catch (err) {
-    next(err);
-  }
+router.get("/:id", checkCarId, async (req, res, next) => {
+  res.json(req.car);
 });
 
 router.post("/", async (req, res, next) => {
