@@ -23,6 +23,13 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// post
+router.post("/", async (req, res, next) => {
+  try {
+    const post = await Car.create(req.body);
+    res.status(201).json(post);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
